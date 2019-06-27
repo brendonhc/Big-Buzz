@@ -1,0 +1,93 @@
+<!doctype html>
+{% load static %}
+
+<html lang="pt-br">
+  {# Configurações, imports e parte não visível do HTML #}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSSs globais -->
+    <link rel="stylesheet" href="{% static 'css/contatoForms.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Fonts Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    {# Estilo exclusivo do template #}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block styles %}
+      <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
+    {% endblock %}
+
+    <title>Sustainable Fun Project!</title>
+  </head>
+
+  {# Parte Visível do HTML #}
+  <body>
+
+    <section id="above">
+      {% block above %}
+        {% include "./partials/_above.html" %}
+      {% endblock %}
+    </section>
+
+    <!-- Menu superior do site para todas as páginas -->
+    <section id="menu">
+      {% block menu %}
+        {% include "./partials/_menu.html" %}
+      {% endblock %}
+    </section>
+
+    <header id="header">
+      {% block header %}
+        {% include "./partials/_header.html" %}
+      {% endblock %}
+    </header>
+
+    <!-- Conteudo da página -->
+    <main role="main" id="main">
+      {# Conteúdo diferente implementado em novo template para cada função que retorna render() da view.py #}
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    <section id="contato">
+      {% block contato %}
+        {% include "./partials/_contatosimples.html" %}
+      {% endblock %}
+    </section>
+
+    <!-- Footer do site ao fim de todas páginas -->
+    <footer id="footer" class="footer text-muted">
+      {% block footer %}
+        {% include "./partials/_footer.html" %}
+      {% endblock %}
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="static/js/form.js"><</script>
+
+    <!-- MENU -->
+    <script src="{% static 'js/menu.js' %}"></script>
+
+    <!-- SmoothScroll https://github.com/cferdinandi/smooth-scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script>
+      var scroll = new SmoothScroll('a[href*="#"]');
+    </script>
+  </body>
+</html>

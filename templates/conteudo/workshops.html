@@ -1,0 +1,31 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/workshops.css' %}" type="text/css" />
+{% endblock styles %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-5 pt-3 justify-content-center">
+        {% for workshop in workshops %}
+            <div class="col-lg-6 no-padding">
+                <div class="card">
+                    <div class="workshop-div">
+                        <img
+                            src="/static/workshops/{{ workshop.slug }}/{{ workshop.slug }}_main.jpg"
+                            class="card-img-top workshop-image"
+                            alt="Imagem do workshop"
+                        >
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{workshop.nome}}</h4>
+                        <p class="card-text">{{workshop.resumo}}</p>
+                        <a href="{% url 'base:mostra_workshop' workshop.slug %}" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

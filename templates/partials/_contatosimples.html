@@ -1,0 +1,58 @@
+{% load static %}
+<script>
+    var csrftoken = '{{ csrf_token }}'
+    $(document).ready(function () {
+        $('#envia-email').click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: "/infoform",
+                type: 'POST',
+                headers: {'X-CSRFToken': csrftoken},
+                data: {
+                    nome : $('#form_nome input').val(),
+                    email : $('#form_email input').val(),
+                    telefone : $('#form_telefone input').val(),
+                    mensagem: $('#form_mensagem textarea').val()
+                },
+                success: function(msg){
+                  $("#formulario").html("<div class=\"alert alert-success\" role=\"alert\">" + msg.resposta + "</div>");
+                },
+                error: function () {
+                    window.alert('Ocorreu um erro no envio do Formulário!')
+                }
+            })
+        })
+    })
+</script>
+<div id="formsSimple">
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-sm-5 d-flex flex-column justify-content-center align-items-center text-form">
+                <h1> Do you have any question ?</h1>
+                <hr id="linha"><hr/>
+                <h1>Contact Us</h1>
+            </div>
+            <div class="col-sm-5" id="formulario">
+                <form method="POST">{% csrf_token %}
+                    <div class="form-row">
+                        <div id="form_nome" class="form-group col-md-12">
+                            {{form.nome}}
+                        </div>
+
+                        <div id="form_email" class="form-group col-md-6">
+                            {{form.email}}
+                        </div>
+
+                        <div id="form_telefone" class="form-group col-md-6">
+                            {{form.telefone}}
+                        </div>
+                        <div id="form_mensagem" class="form-group col-md-12">
+                            {{form.mensagem}}
+                        </div>
+                     </div>
+                </form>
+                <button  id="envia-email" type="submit" class="btn btn-primary btn-block">SEND</button>
+            </div>
+        </div>
+    </div>
+</div>
